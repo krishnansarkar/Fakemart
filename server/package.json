@@ -1,0 +1,12 @@
+{
+  "name": "princeton-woorimart-website-server",
+  "version": "1.0.0",
+  "description": "Server backend for the Princeton Woori-Mart website.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Krishnan Sarkar",
+  "license": "ISC"
+}
