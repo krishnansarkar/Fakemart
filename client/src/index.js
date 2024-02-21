@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./components/Root";
 import HomePage from "./components/pages/Home-page";
 import ErrorPage from "./components/pages/Error-page";
 import MenusPage from "./components/pages/Menus-page";
@@ -8,12 +9,18 @@ import MenusPage from "./components/pages/Menus-page";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "/menus",
-    element: <MenusPage />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+      },
+      {
+        path: "/menus",
+        element: <MenusPage />,
+      },
+    ],
   },
 ]);
 
