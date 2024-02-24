@@ -8,6 +8,7 @@ import MenusPage from "./components/pages/Menus-page";
 import CateringPage from "./components/pages/Catering-page";
 import ContactUsPage from "./components/pages/ContactUs-page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
