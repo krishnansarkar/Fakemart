@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 export default function MyNavBar() {
   return (
     <div>
-      <Navbar sticky="top">
+      <Navbar className="bg-primary" sticky="top">
         <Container>
           <Navbar.Brand>WooRi Mart</Navbar.Brand>
           <Nav className="me-auto">
