@@ -1,4 +1,5 @@
 import Container from "react-bootstrap/Container";
+import FeaturedDisplay from "./FeaturedDisplay";
 import FeaturedProducts from "./FeaturedProducts";
 
 export default function HomePage() {
@@ -56,9 +57,7 @@ export default function HomePage() {
           </div>
         </div>
       </Container>
-      <div>
-        <p>Korean food discount up to 50%. Available from 6pm to close.</p>
-      </div>
+      <FeaturedDisplay />
       <div>
         <FeaturedProducts />
       </div>

@@ -1,3 +1,5 @@
+import { Container } from "react-bootstrap";
+
 export default function FeaturedProducts() {
   const products = [
     {
@@ -15,8 +17,8 @@ export default function FeaturedProducts() {
   ];
 
   return (
-    <>
-      <h2>Featured Products and Deals</h2>
+    <Container className="bg-white py-5" id="featureddeals">
+      <h2 className="text-center">Featured Products and Deals</h2>
       {products.map((product) => (
         <div>
           <p>{product.name}</p>
@@ -25,6 +27,6 @@ export default function FeaturedProducts() {
           <p>{product.deal}</p>
         </div>
       ))}
-    </>
+    </Container>
   );
 }
