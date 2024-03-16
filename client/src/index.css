@@ -1,6 +1,7 @@
 :root {
   --primary: #02ca81;
   --secondary: #014b3f;
+  --white: #fff6ef;
 }
 
 .bg-primary {
@@ -9,4 +10,8 @@
 
 .bg-secondary {
   background-color: var(--secondary) !important;
+}
+
+.bg-white {
+  background-color: var(--white) !important;
 }
