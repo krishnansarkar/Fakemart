@@ -1,3 +1,7 @@
+// Todo:
+// 1. Fix responsivity
+// 2. Showcase random product in featured sales.
+
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export default function FeaturedDisplay() {

@@ -6,7 +6,7 @@ export default function HomePage() {
   const heroContainerStyle = {
     backgroundImage: "url('/images/heroimage.png')",
     backgroundSize: "cover",
-    minHeight: "847px",
+    height: "847px",
     position: "relative",
   };
 
