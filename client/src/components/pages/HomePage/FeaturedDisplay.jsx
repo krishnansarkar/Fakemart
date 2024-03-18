@@ -1,14 +1,6 @@
-// Todo:
-// 1. Fix responsivity
-// 2. Showcase random product in featured sales.
-
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export default function FeaturedDisplay() {
-  const featuredLinkStyle = {
-    "max-width": "332px",
-  };
-
   const imageStyle = {
     maxWidth: "100%",
   };
@@ -16,7 +8,7 @@ export default function FeaturedDisplay() {
   return (
     <Container fluid className="bg-primary py-5 justify-content-center">
       <Row>
-        <Col xs={12} md={8}>
+        <Col xs={12} md={8} className="d-flex justify-content-center">
           <div>
             <img
               src={process.env.PUBLIC_URL + "/images/KoreanFoodSaleFlyer.png"}
@@ -25,8 +17,8 @@ export default function FeaturedDisplay() {
             />
           </div>
         </Col>
-        <Col>
-          <div className="bg-white py-5 px-5">
+        <Col className="d-flex justify-content-center">
+          <div className="bg-white p-5">
             <h1>Sales going on right now.</h1>
             <p>
               See just a few of our sales and featured products here at Woori
