@@ -51,7 +51,7 @@ export default function FeaturedProducts() {
         {groupedProducts.map((group, r) => (
           <Row key={r}>
             {group.map((product, c) => (
-              <Col key={r + c}>
+              <Col xs={12} md={4} key={r + c}>
                 <Card className="mb-4">
                   <Card.Img
                     variant="top"

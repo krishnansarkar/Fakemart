@@ -6,7 +6,7 @@ export default function HomePage() {
   const heroContainerStyle = {
     backgroundImage: "url('/images/heroimage.png')",
     backgroundSize: "cover",
-    height: "847px",
+    height: "700px",
     position: "relative",
   };
 
@@ -40,7 +40,7 @@ export default function HomePage() {
               Korean traditions brought to Princeton's doorstep
             </h1>
           </div>
-          <div className="mt-5 mx-auto" style={heroDescriptionStyle}>
+          <div className="mt-5 mx-auto px-2" style={heroDescriptionStyle}>
             <h3 className="fw-normal">
               Welcome to Woori Mart Princeton, where you can indulge your senses
               with authentic Korean cuisine. Our goal is to provide a welcoming
