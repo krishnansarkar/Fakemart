@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root";
 import HomePage from "./components/pages/HomePage/Home-page";
 import ErrorPage from "./components/pages/Error-page";
-import MenusPage from "./components/pages/Menus-page";
+import MenusPage from "./components/pages/MenusPage/Menus-page";
 import CateringPage from "./components/pages/Catering-page";
 import ContactUsPage from "./components/pages/ContactUs-page";
 import "bootstrap/dist/css/bootstrap.min.css";

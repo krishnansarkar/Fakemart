@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 export default function MyNavBar() {
   return (
     <div>
-      <Navbar className="bg-primary" fixed="top" expand="md" collapseOnSelect>
+      <Navbar className="bg-primary" expand="md" collapseOnSelect>
         <Container>
           <Navbar.Brand>WooRi Mart</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
