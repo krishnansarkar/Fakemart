@@ -4,6 +4,11 @@
   --white: #fff6ef;
 }
 
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
 .bg-primary {
   background-color: var(--primary) !important;
 }

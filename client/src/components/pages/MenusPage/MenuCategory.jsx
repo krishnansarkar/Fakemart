@@ -1,32 +1,18 @@
 import MenuItem from "./MenuItem";
 
 export default function MenuCategory(props) {
-  const category = {
-    name: "Kimbab 김밥",
-    description: "Korean style seaweed rolls",
-  };
-  const items = [
-    {
-      name: "Bulgogi Beef Kimbab 불고기 김밥",
-      description: "",
-      price: "8",
-    },
-    {
-      name: "K Style Kimbab 김밥",
-      description: "Vegetable seaweed roll",
-      price: "7",
-    },
-  ];
+  const items = props.items || [];
+
   return (
-    <>
-      <h4>{category.name}</h4>
-      <p>{category.description}</p>
+    <div className="mb-5">
+      <h4>{props.name}</h4>
+      {props.description && <p>{props.description}</p>}
       {items.map((item) => (
         <>
           <hr />
           <MenuItem item={item} />
         </>
       ))}
-    </>
+    </div>
   );
 }
