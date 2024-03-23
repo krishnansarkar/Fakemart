@@ -1,16 +1,7 @@
-import { Container, Row, Col } from "react-bootstrap";
-import MenuCategory from "./MenuCategory";
+import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
+import MenuTab from "./MenuTab";
 
 export default function MenusPage() {
-  const menuItemStyle = {
-    display: "flex",
-    justifyContent: "space-between",
-  };
-
-  const itemPriceStyle = {
-    textAlign: "right",
-  };
-
   const leftColCategories = [
     {
       name: "Kimbab 김밥",
@@ -82,32 +73,35 @@ export default function MenusPage() {
       ],
     },
   ];
+
+  const tabContainerStyle = {
+    width: "980px",
+  };
   return (
-    <Container>
-      <Row className="mb-5">
-        <h3>K-Dish</h3>
-        <p>Bring Korea home with you</p>
-      </Row>
-      <Row>
-        <Col>
-          {leftColCategories.map((category) => (
-            <MenuCategory
-              name={category.name}
-              description={category.description}
-              items={category.items}
+    <Container style={tabContainerStyle} className="mx-auto my-5">
+      <Tab.Container defaultActiveKey="first">
+        <Nav variant="underline" className="justify-content-end">
+          <Nav.Item>
+            <Nav.Link eventKey="first">K-Dish</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="second">Sushi</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <Tab.Content>
+          <Tab.Pane eventKey="first">
+            <MenuTab
+              name="K-Dish"
+              description="Bring Korea home with you"
+              leftColCategories={leftColCategories}
+              rightColCategories={rightColCategories}
             />
-          ))}
-        </Col>
-        <Col>
-          {rightColCategories.map((category) => (
-            <MenuCategory
-              name={category.name}
-              description={category.description}
-              items={category.items}
-            />
-          ))}
-        </Col>
-      </Row>
+          </Tab.Pane>
+          <Tab.Pane eventKey="second">
+            <h1>2nd tab</h1>
+          </Tab.Pane>
+        </Tab.Content>
+      </Tab.Container>
     </Container>
   );
 }
