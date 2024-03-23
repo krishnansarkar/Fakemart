@@ -18,7 +18,7 @@ export default function MenuTab(props) {
             />
           ))}
         </Col>
-        <Col className="ps-5">
+        <Col className="pe-5">
           {props.rightColCategories.map((category) => (
             <MenuCategory
               name={category.name}
