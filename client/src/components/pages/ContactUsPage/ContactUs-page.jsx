@@ -25,8 +25,6 @@ export default function ContactUsPage() {
         message,
       };
 
-      console.log(process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
-
       await emailjs.send(
         process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
         process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID,
