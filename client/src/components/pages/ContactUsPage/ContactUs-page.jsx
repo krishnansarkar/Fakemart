@@ -1,39 +1,90 @@
 import { Form, Button } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 
 export default function ContactUsPage() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    const { name, email, message } = data;
+    try {
+      const templateParams = {
+        name,
+        email,
+        message,
+      };
+
+      console.log(process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY);
+
+      await emailjs.send(
+        process.env.REACT_APP_EMAIL_JS_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID,
+        templateParams,
+        { publicKey: process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY }
+      );
+
+      reset();
+    } catch (e) {
+      console.log("failed:" + e);
+    }
+  };
+
+  const formStyle = {
+    maxWidth: "900px",
+  };
+
   return (
-    <>
+    <div className="mx-auto py-5" style={formStyle}>
       <h1>Contact Us</h1>
-      <p>
+      <p className="pb-3">
         Have a question, suggestion, or just want to say hello? We'd love to
-        hear from you. Feel free to reach out to us via email or phone.
+        hear from you. Feel free to reach out to us via email, phone, or the
+        form below.
       </p>
-      <Form>
-        <Form.Group controlId="firstName">
-          <Form.Label>First name</Form.Label>
-          <Form.Control type="text" placeholder="Emma" required />
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form.Group controlId="Name" className="mb-3 ">
+          <Form.Label>Name*</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Jane Doe"
+            {...register("name", {
+              required: "Name is required.",
+            })}
+          />
+          {errors.name && <span>{errors.name.message}</span>}
         </Form.Group>
-        <Form.Group controlId="lastName">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control type="text" placeholder="Kim" required />
+        <Form.Group controlId="email" className="mb-3">
+          <Form.Label>Email address*</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="email@example.com"
+            {...register("email", {
+              required: "Email is required",
+            })}
+          />
+          {errors.email && <span>{errors.email.message}</span>}
         </Form.Group>
-        <Form.Group controlId="email">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="email@example.com" required />
-        </Form.Group>
-        <Form.Group controlId="message">
-          <Form.Label>Message</Form.Label>
+        <Form.Group controlId="message" className="mb-3">
+          <Form.Label>Message*</Form.Label>
           <Form.Control
             as="textarea"
             rows={3}
-            placeholder="Hello, this is an example message."
-            required
+            placeholder="Hello. This is an example message."
+            {...register("message", {
+              required: "Message is required",
+            })}
           />
+          {errors.message && <span>{errors.message.message}</span>}
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          Send
         </Button>
       </Form>
-    </>
+    </div>
   );
 }
