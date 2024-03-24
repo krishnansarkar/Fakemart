@@ -1,8 +1,11 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import { useState } from "react";
 
 export default function ContactUsPage() {
+  const [submitDisabled, setSubmitDisabled] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -12,6 +15,9 @@ export default function ContactUsPage() {
 
   const onSubmit = async (data) => {
     const { name, email, message } = data;
+
+    setSubmitDisabled(true);
+
     try {
       const templateParams = {
         name,
@@ -31,6 +37,8 @@ export default function ContactUsPage() {
       reset();
     } catch (e) {
       console.log("failed:" + e);
+    } finally {
+      setSubmitDisabled(false);
     }
   };
 
@@ -81,9 +89,15 @@ export default function ContactUsPage() {
           />
           {errors.message && <span>{errors.message.message}</span>}
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Send
-        </Button>
+        {!submitDisabled ? (
+          <Button variant="primary" type="submit">
+            Send
+          </Button>
+        ) : (
+          <Button variant="primary" type="submit" disabled>
+            Sending...
+          </Button>
+        )}
       </Form>
     </div>
   );
