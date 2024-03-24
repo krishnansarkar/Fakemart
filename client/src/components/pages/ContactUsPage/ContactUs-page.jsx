@@ -5,6 +5,36 @@ import { useState } from "react";
 
 export default function ContactUsPage() {
   const [submitDisabled, setSubmitDisabled] = useState(false);
+  const [sendButtonText, setSendButtonText] = useState("Send");
+
+  const sendButtonStates = {
+    Ready: "Send",
+    Sending: "Sending...",
+    Sent: "Sent!",
+  };
+  function setSendButtonState(state) {
+    switch (state) {
+      case sendButtonStates.Ready:
+        setSubmitDisabled(false);
+        setSendButtonText(sendButtonStates.Ready);
+        break;
+      case sendButtonStates.Sending:
+        setSubmitDisabled(true);
+        setSendButtonText(sendButtonStates.Sending);
+        break;
+      case sendButtonStates.Sent:
+        setSubmitDisabled(true);
+        setSendButtonText(sendButtonStates.Sent);
+        break;
+      case sendButtonStates.Error:
+        setSubmitDisabled(true);
+        setSendButtonText(sendButtonStates.Error);
+        break;
+      default:
+        console.log("Attempted to set send button state to an invalid value.");
+        break;
+    }
+  }
 
   const {
     register,
@@ -16,7 +46,7 @@ export default function ContactUsPage() {
   const onSubmit = async (data) => {
     const { name, email, message } = data;
 
-    setSubmitDisabled(true);
+    setSendButtonState(sendButtonStates.Sending);
 
     try {
       const templateParams = {
@@ -32,11 +62,16 @@ export default function ContactUsPage() {
         { publicKey: process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY }
       );
 
+      setSendButtonState(sendButtonStates.Sent);
+
       reset();
     } catch (e) {
-      console.log("failed:" + e);
+      console.log("Failed to send message: " + e);
+      setSendButtonState(sendButtonStates.Error);
     } finally {
-      setSubmitDisabled(false);
+      setTimeout(() => {
+        setSendButtonState(sendButtonStates.Ready);
+      }, 1500);
     }
   };
 
@@ -87,15 +122,9 @@ export default function ContactUsPage() {
           />
           {errors.message && <span>{errors.message.message}</span>}
         </Form.Group>
-        {!submitDisabled ? (
-          <Button variant="primary" type="submit">
-            Send
-          </Button>
-        ) : (
-          <Button variant="primary" type="submit" disabled>
-            Sending...
-          </Button>
-        )}
+        <Button variant="primary" type="submit" disabled={submitDisabled}>
+          {sendButtonText}
+        </Button>
       </Form>
     </div>
   );
