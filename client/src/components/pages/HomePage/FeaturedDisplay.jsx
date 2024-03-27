@@ -5,6 +5,10 @@ export default function FeaturedDisplay() {
     maxWidth: "100%",
   };
 
+  const textStyle = {
+    fontSize: "18px",
+  };
+
   return (
     <Container fluid className="bg-primary py-5 justify-content-center">
       <Row>

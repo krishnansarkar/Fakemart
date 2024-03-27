@@ -5,7 +5,7 @@ import Root from "./components/Root";
 import HomePage from "./components/pages/HomePage/Home-page";
 import ErrorPage from "./components/pages/Error-page";
 import MenusPage from "./components/pages/MenusPage/Menus-page";
-import CateringPage from "./components/pages/Catering-page";
+import CateringPage from "./components/pages/CateringPage/Catering-page";
 import ContactUsPage from "./components/pages/ContactUsPage/ContactUs-page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
