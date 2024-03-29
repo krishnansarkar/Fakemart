@@ -7,9 +7,13 @@ export default function TopDisplay() {
     width: "455px",
   };
 
+  const rowStyle = {
+    maxWidth: "1000px",
+  };
+
   return (
     <Container fluid className="bg-white py-5 justify-content-center">
-      <Row>
+      <Row style={rowStyle} className="mx-auto">
         <Col>
           <div>
             <img
