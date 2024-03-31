@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import Lightbox from "bs5-lightbox";
 import TopDisplay from "./TopDisplay";
 import sushiPlatters from "./sushiplatters";
 
@@ -103,11 +104,23 @@ export default function CateringPage() {
           {sushiPlatters.map((platter, index) => (
             <Col key={"Platter " + index} xs={12} md={4} className="pb-3">
               <div style={thumbnailContainerStyle}>
-                <img
-                  src={platter.imageUrl}
-                  alt={"Platter " + index}
-                  style={thumbnailImageStyle}
-                />
+                <a
+                  href={platter.imageUrl}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log(e.target);
+                    const lightbox = new Lightbox(e.target);
+                    lightbox.show();
+                  }}
+                >
+                  <img
+                    src={platter.imageUrl}
+                    alt={"Platter " + index}
+                    style={thumbnailImageStyle}
+                    data-src={platter.imageUrl}
+                    data-gallery="sushiplatters"
+                  />
+                </a>
               </div>
             </Col>
           ))}
