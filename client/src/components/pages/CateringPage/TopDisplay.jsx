@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 export default function TopDisplay() {
   const imageStyle = {
     borderRadius: "50% 50% 0% 0%",
-    width: "455px",
+    width: "300px",
+    display: "block",
+    margin: "auto",
   };
 
   const rowStyle = {
@@ -14,7 +16,7 @@ export default function TopDisplay() {
   return (
     <Container fluid className="bg-white py-5 justify-content-center">
       <Row style={rowStyle} className="mx-auto">
-        <Col>
+        <Col className="pb-3">
           <div>
             <img
               src={process.env.PUBLIC_URL + "/images/bimbop.png"}
@@ -24,7 +26,7 @@ export default function TopDisplay() {
           </div>
         </Col>
         <Col>
-          <h1>Let us cater your next event</h1>
+          <h1 className="text-center">Let us cater your next event</h1>
           <p className="lead mb-3">
             We pride ourselves on not only having the freshest ingredients, but
             also having the best chefs in the area bringing traditional Korean

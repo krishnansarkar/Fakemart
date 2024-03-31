@@ -12,6 +12,8 @@ export default function CateringPage() {
     maxWidth: "300px",
     maxHeight: "300px",
     overflow: "hidden",
+    display: "block",
+    margin: "auto",
   };
 
   const thumbnailImageStyle = {
@@ -21,11 +23,11 @@ export default function CateringPage() {
   };
 
   const galleryStyle = {
-    width: "1000px",
+    maxWidth: "1000px",
   };
 
   const galleryTitleStyle = {
-    width: "700px",
+    maxWidth: "700px",
     textAlign: "center",
   };
 
@@ -47,7 +49,7 @@ export default function CateringPage() {
             <img
               src={process.env.PUBLIC_URL + "/images/sushiplatter.png"}
               alt="Sushi Platter"
-              height={356}
+              style={thumbnailContainerStyle}
             />
           </Col>
         </Row>
@@ -56,7 +58,7 @@ export default function CateringPage() {
             <img
               src={process.env.PUBLIC_URL + "/images/lunchbox.png"}
               alt="Lunch Box"
-              height={356}
+              style={thumbnailContainerStyle}
             />
           </Col>
           <Col>
@@ -84,7 +86,7 @@ export default function CateringPage() {
             <img
               src={process.env.PUBLIC_URL + "/images/fruitplatter.png"}
               alt="Fruit Platter"
-              height={356}
+              style={thumbnailContainerStyle}
             />
           </Col>
         </Row>
