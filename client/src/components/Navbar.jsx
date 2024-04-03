@@ -36,7 +36,7 @@ export default function MyNavBar(props) {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Offcanvas show={showCart} onHide={handleCartClose}>
+      <Offcanvas show={showCart} onHide={handleCartClose} placement="end">
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
