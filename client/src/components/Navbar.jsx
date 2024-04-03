@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Button, Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 
-export default function MyNavBar() {
+export default function MyNavBar(props) {
   const [showCart, setShowCart] = useState(false);
   const handleCartClose = () => setShowCart(false);
   const handleCartOpen = () => setShowCart(true);
@@ -27,7 +27,7 @@ export default function MyNavBar() {
             </Nav>
             <Nav classname="ml-auto">
               <Button variant="primary" onClick={handleCartOpen}>
-                Cart
+                Cart: {props.getCartCount()}
               </Button>
               <Nav.Link as={Link} to="/ContactUs">
                 Contact Us
@@ -40,7 +40,13 @@ export default function MyNavBar() {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>Cart items</Offcanvas.Body>
+        <Offcanvas.Body>
+          {props.cart.map((item) => (
+            <p>
+              {item.name} : {item.quantity}
+            </p>
+          ))}
+        </Offcanvas.Body>
       </Offcanvas>
     </div>
   );
