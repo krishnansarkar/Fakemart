@@ -4,7 +4,7 @@ import products from "./products";
 
 export default function FeaturedProducts() {
   const rowStyle = {
-    width: "1200px",
+    maxWidth: "1200px",
   };
   return (
     <Container fluid className="bg-white py-5" id="featureddeals">
