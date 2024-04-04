@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button, Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
+import {
+  Button,
+  Navbar,
+  Nav,
+  Container,
+  Offcanvas,
+  Row,
+  Col,
+} from "react-bootstrap";
 
 export default function MyNavBar(props) {
   const [showCart, setShowCart] = useState(false);
@@ -27,7 +35,7 @@ export default function MyNavBar(props) {
             </Nav>
             <Nav classname="ml-auto">
               <Button variant="primary" onClick={handleCartOpen}>
-                Cart: {props.getCartCount()}
+                Cart: {props.cartFunctions.getCount()}
               </Button>
               <Nav.Link as={Link} to="/ContactUs">
                 Contact Us
@@ -42,9 +50,36 @@ export default function MyNavBar(props) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {props.cart.map((item) => (
-            <p>
-              {item.name} : {item.quantity}
-            </p>
+            <Row>
+              <Col>
+                {item.name} :{" "}
+                <Button
+                  onClick={() => {
+                    props.cartFunctions.addItem(item.name);
+                    console.log(item.name);
+                  }}
+                >
+                  +
+                </Button>
+                {item.quantity}
+                <Button
+                  onClick={() => {
+                    props.cartFunctions.removeItem(item.name);
+                  }}
+                >
+                  -
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  onClick={() => {
+                    props.cartFunctions.cancelItem(item.name);
+                  }}
+                >
+                  X
+                </Button>
+              </Col>
+            </Row>
           ))}
         </Offcanvas.Body>
       </Offcanvas>
