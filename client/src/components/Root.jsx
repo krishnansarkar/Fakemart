@@ -11,8 +11,22 @@ export default function Root() {
   const [items, setItems] = useState([]);
 
   const getCount = () => {
+    if (items.length === 0) {
+      return 0;
+    }
     return items.reduce(
       (accumulator, element) => accumulator + element.quantity,
+      0
+    );
+  };
+
+  const getTotalCost = () => {
+    if (items.length === 0) {
+      return 0;
+    }
+
+    return items.reduce(
+      (accumulator, item) => accumulator + item.quantity * item.price,
       0
     );
   };
@@ -61,6 +75,7 @@ export default function Root() {
     cancelItem,
     addItem,
     removeItem,
+    getTotalCost,
   };
 
   return (

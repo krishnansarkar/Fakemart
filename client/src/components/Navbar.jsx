@@ -50,8 +50,8 @@ export default function MyNavBar(props) {
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {cart.items.map((item) => (
-            <Row>
+          {cart.items.map((item, index) => (
+            <Row key={index}>
               <Col>
                 {item.name} :{" "}
                 <Button
@@ -82,6 +82,13 @@ export default function MyNavBar(props) {
               </Col>
             </Row>
           ))}
+          <Row>
+            <hr />
+          </Row>
+          <Row>
+            <Col>Total:</Col>
+            <Col>${cart.getTotalCost()}</Col>
+          </Row>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
