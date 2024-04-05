@@ -9,10 +9,9 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
-import useCart from "./useCart";
 
 export default function MyNavBar(props) {
-  const cart = useCart();
+  const { cart } = props;
   const [showCart, setShowCart] = useState(false);
   const handleCartClose = () => setShowCart(false);
   const handleCartOpen = () => setShowCart(true);
@@ -58,7 +57,6 @@ export default function MyNavBar(props) {
                 <Button
                   onClick={() => {
                     cart.addItem(item.name);
-                    console.log(item.name);
                   }}
                 >
                   +

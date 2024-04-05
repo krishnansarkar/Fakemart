@@ -1,7 +1,9 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import MenuTab from "./MenuTab";
+import { useOutletContext } from "react-router-dom";
 
-export default function MenusPage() {
+export default function MenusPage(props) {
+  const cart = useOutletContext();
   const kdishcategories = {
     leftCol: [
       {
@@ -147,6 +149,7 @@ export default function MenusPage() {
         <Tab.Content>
           <Tab.Pane eventKey="first">
             <MenuTab
+              cart={cart}
               name="K-Dish"
               description="Bring Korea home with you"
               leftColCategories={kdishcategories.leftCol}
@@ -155,6 +158,7 @@ export default function MenusPage() {
           </Tab.Pane>
           <Tab.Pane eventKey="second">
             <MenuTab
+              cart={cart}
               name="Sushi"
               description="Fresh sushi every day from Sushi Avocado"
               leftColCategories={shushicategories.leftCol}

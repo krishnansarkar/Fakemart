@@ -10,7 +10,7 @@ export default function MenuCategory(props) {
       {items.map((item) => (
         <>
           <hr />
-          <MenuItem item={item} />
+          <MenuItem item={item} cart={props.cart} />
         </>
       ))}
     </div>

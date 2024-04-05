@@ -15,6 +15,7 @@ export default function MenuTab(props) {
               name={category.name}
               description={category.description}
               items={category.items}
+              cart={props.cart}
             />
           ))}
         </Col>
@@ -24,6 +25,7 @@ export default function MenuTab(props) {
               name={category.name}
               description={category.description}
               items={category.items}
+              cart={props.cart}
             />
           ))}
         </Col>
