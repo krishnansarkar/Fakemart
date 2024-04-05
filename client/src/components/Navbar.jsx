@@ -9,8 +9,10 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import useCart from "./useCart";
 
 export default function MyNavBar(props) {
+  const cart = useCart();
   const [showCart, setShowCart] = useState(false);
   const handleCartClose = () => setShowCart(false);
   const handleCartOpen = () => setShowCart(true);
@@ -35,7 +37,7 @@ export default function MyNavBar(props) {
             </Nav>
             <Nav classname="ml-auto">
               <Button variant="primary" onClick={handleCartOpen}>
-                Cart: {props.cartFunctions.getCount()}
+                Cart: {cart.getCount()}
               </Button>
               <Nav.Link as={Link} to="/ContactUs">
                 Contact Us
@@ -49,13 +51,13 @@ export default function MyNavBar(props) {
           <Offcanvas.Title>Cart</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          {props.cart.map((item) => (
+          {cart.items.map((item) => (
             <Row>
               <Col>
                 {item.name} :{" "}
                 <Button
                   onClick={() => {
-                    props.cartFunctions.addItem(item.name);
+                    cart.addItem(item.name);
                     console.log(item.name);
                   }}
                 >
@@ -64,7 +66,7 @@ export default function MyNavBar(props) {
                 {item.quantity}
                 <Button
                   onClick={() => {
-                    props.cartFunctions.removeItem(item.name);
+                    cart.removeItem(item.name);
                   }}
                 >
                   -
@@ -73,7 +75,7 @@ export default function MyNavBar(props) {
               <Col>
                 <Button
                   onClick={() => {
-                    props.cartFunctions.cancelItem(item.name);
+                    cart.cancelItem(item.name);
                   }}
                 >
                   X
