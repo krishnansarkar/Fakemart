@@ -56,7 +56,7 @@ export default function MyNavBar(props) {
                 {item.name} :{" "}
                 <Button
                   onClick={() => {
-                    cart.addItem(item.name);
+                    cart.addItem(item.name, item.price);
                   }}
                 >
                   +
@@ -71,6 +71,7 @@ export default function MyNavBar(props) {
                 </Button>
               </Col>
               <Col>
+                ${item.quantity * item.price}
                 <Button
                   onClick={() => {
                     cart.cancelItem(item.name);

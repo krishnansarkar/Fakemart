@@ -20,7 +20,7 @@ export default function MenuItem(props) {
       <Col>
         <Button
           onClick={() => {
-            cart.addItem(item.name);
+            cart.addItem(item.name, item.price);
           }}
         >
           +

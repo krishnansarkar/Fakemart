@@ -29,11 +29,11 @@ export default function Root() {
     setItems(items.filter((item) => item.name !== itemName));
   };
 
-  const addItem = (itemName) => {
+  const addItem = (itemName, price) => {
     const indexOfItem = items.findIndex((item) => item.name === itemName);
 
     if (indexOfItem === -1) {
-      setItems([{ name: itemName, quantity: 1 }, ...items]);
+      setItems([{ name: itemName, quantity: 1, price: price }, ...items]);
     } else {
       const newItems = [...items];
       newItems[indexOfItem].quantity += 1;
