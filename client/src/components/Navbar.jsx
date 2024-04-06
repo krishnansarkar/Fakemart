@@ -100,7 +100,7 @@ export default function MyNavBar(props) {
             <hr />
           </Row>
           <Row>
-            <Col>Total:</Col>
+            <Col xs={8}>Total:</Col>
             <Col>${cart.getTotalCost()}</Col>
           </Row>
         </Offcanvas.Body>

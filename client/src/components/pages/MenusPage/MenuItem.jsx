@@ -13,14 +13,14 @@ export default function MenuItem(props) {
   //const quantity = 0;
 
   return (
-    <Row>
+    <Row className="d-flex align-items-center">
       <Col xs={5}>
         <b>{item.name}</b>
         {item.description !== "" && <p>{item.description}</p>}
       </Col>
       <Col style={itemPriceStyle}>${item.price}</Col>
 
-      <Col>
+      <Col className="d-flex justify-content-center">
         <Button
           className="me-2"
           variant="light"
@@ -32,7 +32,7 @@ export default function MenuItem(props) {
         </Button>
         {quantity > 0 && (
           <>
-            {quantity}
+            <p className="d-flex align-self-center">{quantity}</p>
             <Button
               className="ms-2"
               variant="light"
