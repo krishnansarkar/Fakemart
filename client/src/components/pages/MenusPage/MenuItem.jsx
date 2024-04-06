@@ -14,7 +14,7 @@ export default function MenuItem(props) {
 
   return (
     <Row>
-      <Col xs={6}>
+      <Col xs={5}>
         <b>{item.name}</b>
         {item.description !== "" && <p>{item.description}</p>}
       </Col>
@@ -22,6 +22,8 @@ export default function MenuItem(props) {
 
       <Col>
         <Button
+          className="me-2"
+          variant="light"
           onClick={() => {
             cart.addItem(item.name, item.price);
           }}
@@ -32,6 +34,8 @@ export default function MenuItem(props) {
           <>
             {quantity}
             <Button
+              className="ms-2"
+              variant="light"
               onClick={() => {
                 cart.removeItem(item.name);
               }}

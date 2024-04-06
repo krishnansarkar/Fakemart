@@ -53,36 +53,48 @@ export default function MyNavBar(props) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {cart.items.map((item, index) => (
-            <Row key={index}>
-              <Col>
-                {item.name} :{" "}
-                <Button
-                  onClick={() => {
-                    cart.addItem(item.name, item.price);
-                  }}
-                >
-                  +
-                </Button>
-                {item.quantity}
-                <Button
-                  onClick={() => {
-                    cart.removeItem(item.name);
-                  }}
-                >
-                  -
-                </Button>
-              </Col>
-              <Col>
-                ${item.quantity * item.price}
-                <Button
-                  onClick={() => {
-                    cart.cancelItem(item.name);
-                  }}
-                >
-                  X
-                </Button>
-              </Col>
-            </Row>
+            <div>
+              <Row key={index}>
+                <Col xs={8} className="align-middle">
+                  {item.name}
+                </Col>
+                <Col>
+                  ${item.quantity * item.price}
+                  <Button
+                    className="ms-3"
+                    variant="dark"
+                    onClick={() => {
+                      cart.cancelItem(item.name);
+                    }}
+                  >
+                    X
+                  </Button>
+                </Col>
+              </Row>
+              <Row className="border-bottom mb-2">
+                <Col>
+                  <Button
+                    className="me-2"
+                    variant="light"
+                    onClick={() => {
+                      cart.addItem(item.name, item.price);
+                    }}
+                  >
+                    +
+                  </Button>
+                  {item.quantity}
+                  <Button
+                    className="ms-2"
+                    variant="light"
+                    onClick={() => {
+                      cart.removeItem(item.name);
+                    }}
+                  >
+                    -
+                  </Button>
+                </Col>
+              </Row>
+            </div>
           ))}
           <Row>
             <hr />

@@ -48,7 +48,7 @@ export default function Root() {
     const indexOfItem = items.findIndex((item) => item.name === itemName);
 
     if (indexOfItem === -1) {
-      setItems([{ name: itemName, quantity: 1, price: price }, ...items]);
+      setItems([...items, { name: itemName, quantity: 1, price: price }]);
     } else {
       const newItems = [...items];
       newItems[indexOfItem].quantity += 1;
