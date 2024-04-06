@@ -133,7 +133,7 @@ export default function MenusPage(props) {
   };
 
   const tabContainerStyle = {
-    width: "980px",
+    maxWidth: "980px",
   };
   return (
     <Container style={tabContainerStyle} className="mx-auto my-5">
