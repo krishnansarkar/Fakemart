@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import CartContext from "./contexts/CartContext";
 
 export default function Root() {
   const websiteStyle = {
@@ -80,8 +81,10 @@ export default function Root() {
 
   return (
     <div style={websiteStyle}>
-      <Navbar cart={cart} />
-      <Outlet context={cart} />
+      <CartContext.Provider value={cart}>
+        <Navbar />
+        <Outlet />
+      </CartContext.Provider>
       <Footer />
     </div>
   );

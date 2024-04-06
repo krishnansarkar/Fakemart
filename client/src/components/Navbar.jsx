@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+import CartContext from "./contexts/CartContext";
 import {
   Button,
   Navbar,
@@ -11,7 +13,7 @@ import {
 } from "react-bootstrap";
 
 export default function MyNavBar(props) {
-  const { cart } = props;
+  const cart = useContext(CartContext);
   const [showCart, setShowCart] = useState(false);
   const handleCartClose = () => setShowCart(false);
   const handleCartOpen = () => setShowCart(true);

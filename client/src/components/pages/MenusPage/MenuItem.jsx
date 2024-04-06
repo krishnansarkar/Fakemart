@@ -1,11 +1,14 @@
 import { Row, Col, Button } from "react-bootstrap";
+import { useContext } from "react";
+import CartContext from "../../contexts/CartContext";
 
 export default function MenuItem(props) {
   const itemPriceStyle = {
     textAlign: "right",
   };
 
-  const { item, cart } = props;
+  const { item } = props;
+  const cart = useContext(CartContext);
   const quantity = cart.getQuantity(item.name);
   //const quantity = 0;
 
