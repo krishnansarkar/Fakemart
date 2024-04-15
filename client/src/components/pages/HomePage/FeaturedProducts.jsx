@@ -7,7 +7,7 @@ export default function FeaturedProducts() {
     maxWidth: "1200px",
   };
   return (
-    <Container fluid className="bg-white py-5" id="featureddeals">
+    <Container fluid className="bg-white py-5">
       <h2 className="text-center mb-5">Featured Products and Deals</h2>
       <Row style={rowStyle} className="mx-auto">
         {products.map((product, index) => (
