@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import contactInfo from "./baked-data/contactInfo";
 
 export default function Footer() {
   return (
@@ -23,9 +24,11 @@ export default function Footer() {
           </Col>
           <Col>
             <h2>Contact Info</h2>
-            <p>64 Princeton Hightstown Rd, West Windsor Township, NJ 08550</p>
-            <p>609-750-8888</p>
-            <p>David@woorimartprinceton.com</p>
+            <p>{contactInfo.address}</p>
+            <p>{contactInfo.number}</p>
+            <p>
+              <a href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
+            </p>
           </Col>
         </Row>
       </Container>

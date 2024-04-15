@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { LinkWithTooltip } from "../../util/LinkWithTooltip";
-import contactInfo from "./contactInfo";
+import contactInfo from "../../baked-data/contactInfo";
 
 export default function ContactUsPage() {
   const [submitDisabled, setSubmitDisabled] = useState(false);
