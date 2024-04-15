@@ -20,7 +20,7 @@ export default function MenuItem(props) {
       </Col>
       <Col style={itemPriceStyle}>${item.price}</Col>
 
-      <Col className="d-flex justify-content-center">
+      <Col className="d-flex">
         <Button
           className="me-2"
           variant="light"
