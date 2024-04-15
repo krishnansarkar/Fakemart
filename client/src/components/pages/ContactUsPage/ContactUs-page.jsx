@@ -1,7 +1,9 @@
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Tooltip } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { LinkWithTooltip } from "../../util/LinkWithTooltip";
+import contactInfo from "./contactInfo";
 
 export default function ContactUsPage() {
   const [submitDisabled, setSubmitDisabled] = useState(false);
@@ -85,8 +87,12 @@ export default function ContactUsPage() {
         <h1>Contact Us</h1>
         <p className="pb-3">
           Have a question, suggestion, or just want to say hello? We'd love to
-          hear from you. Feel free to reach out to us via email, phone, or the
-          form below.
+          hear from you. Feel free to reach out to us via{" "}
+          <a href={"mailto:" + contactInfo.email}>email</a>,{" "}
+          <LinkWithTooltip tooltip={contactInfo.number} href="#">
+            phone
+          </LinkWithTooltip>
+          , or the form below.
         </p>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Form.Group controlId="Name" className="mb-3 ">
