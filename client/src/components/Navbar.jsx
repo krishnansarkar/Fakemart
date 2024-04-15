@@ -37,9 +37,11 @@ export default function MyNavBar(props) {
               </Nav.Link>
             </Nav>
             <Nav classname="ml-auto">
-              <Button variant="primary" onClick={handleCartOpen}>
-                Cart: {cart.getCount()}
-              </Button>
+              {cart.getCount() > 0 && (
+                <Button variant="primary" onClick={handleCartOpen}>
+                  Cart: {cart.getCount()}
+                </Button>
+              )}
               <Nav.Link as={Link} to="/ContactUs">
                 Contact Us
               </Nav.Link>
