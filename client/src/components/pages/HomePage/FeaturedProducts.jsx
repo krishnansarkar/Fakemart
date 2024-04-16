@@ -1,8 +1,26 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 import SaleItemCard from "./SaleItemCard";
-import products from "./products";
+//import products from "./products";
 
 export default function FeaturedProducts() {
+  var [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          process.env.REACT_APP_BACKEND_SERVER_URL + "/api/featured-products"
+        );
+        console.log(response);
+        setProducts(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   const rowStyle = {
     maxWidth: "1200px",
   };

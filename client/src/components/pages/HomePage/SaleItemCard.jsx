@@ -10,7 +10,11 @@ export default function SaleItemCard(props) {
 
   return (
     <Card className={className}>
-      <Card.Img variant="top" src={product.image} style={cardImageStyle} />
+      <Card.Img
+        variant="top"
+        src={process.env.REACT_APP_BACKEND_SERVER_IMAGES_URL + product.image}
+        style={cardImageStyle}
+      />
       <ListGroup className="list-group-flush">
         <ListGroup.Item>{product.name}</ListGroup.Item>
         <ListGroup.Item>Quantity: {product.quantity}</ListGroup.Item>

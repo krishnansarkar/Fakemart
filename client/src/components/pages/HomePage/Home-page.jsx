@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import FeaturedDisplay from "./FeaturedDisplay";
 import FeaturedProducts from "./FeaturedProducts";
-import products from "./products";
 
 export default function HomePage() {
   const heroContainerStyle = {
@@ -31,10 +30,6 @@ export default function HomePage() {
   const heroAddressStyle = {
     "max-width": "500px",
   };
-
-  const randomProduct = products[Math.floor(Math.random(products.length))];
-
-  console.log(randomProduct);
 
   return (
     <>
