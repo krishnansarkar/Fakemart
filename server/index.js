@@ -1,5 +1,6 @@
 import express from "express";
 import products from "./baked_data/products.js";
+import menus from "./baked_data/menus.js";
 
 const app = express();
 const port = 3333;
@@ -17,9 +18,9 @@ app.get("/api/featured-products", (req, res) => {
   res.json(products);
 });
 
-app.get("/api/menu-items", (req, res) => {
-  res.json(menuItems)
-}
+app.get("/api/menus", (req, res) => {
+  res.json(menus);
+});
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}.`);

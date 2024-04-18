@@ -1,8 +1,24 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Container, Tab, Nav } from "react-bootstrap";
 import MenuTab from "./MenuTab";
-import menus from "../../baked-data/menus";
 
 export default function MenusPage(props) {
+  var [menus, setMenus] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          process.env.REACT_APP_BACKEND_SERVER_URL + "/api/menus"
+        );
+        console.log(response);
+        setMenus(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
   const tabContainerStyle = {
     maxWidth: "980px",
   };

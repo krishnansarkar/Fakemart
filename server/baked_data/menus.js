@@ -1,5 +1,5 @@
-const menus = {
-  kdishMenu: {
+const menus = [
+  {
     name: "K-Dish",
     description: "Bring Korea home with you",
     leftCol: [
@@ -73,7 +73,7 @@ const menus = {
       },
     ],
   },
-  shushiMenu: {
+  {
     name: "Sushi",
     description: "Fresh sushi every day from Sushi Avocado",
     leftCol: [
@@ -129,4 +129,6 @@ const menus = {
       },
     ],
   },
-};
+];
+
+export default menus;
