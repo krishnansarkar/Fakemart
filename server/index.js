@@ -17,6 +17,10 @@ app.get("/api/featured-products", (req, res) => {
   res.json(products);
 });
 
+app.get("/api/menu-items", (req, res) => {
+  res.json(menuItems)
+}
+
 app.listen(port, () => {
   console.log(`Server is running on ${port}.`);
 });
