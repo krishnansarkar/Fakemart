@@ -24,7 +24,7 @@ export default function MenusPage(props) {
   };
   return (
     <Container style={tabContainerStyle} className="mx-auto my-5">
-      <Tab.Container defaultActiveKey={1}>
+      <Tab.Container defaultActiveKey={0}>
         <Nav variant="underline" className="justify-content-end">
           {menus.map((menu, index) => (
             <Nav.Item>
