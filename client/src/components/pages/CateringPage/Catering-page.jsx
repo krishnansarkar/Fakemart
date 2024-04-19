@@ -1,10 +1,27 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Container } from "react-bootstrap";
 import TopDisplay from "./TopDisplay";
 import PlatterBurb from "./PlatterBlurb";
-import sushiPlatters from "./sushiplatters";
 import PlatterGallery from "./PlatterGallery";
 
 export default function CateringPage() {
+  var [catering, setCatering] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          process.env.REACT_APP_BACKEND_SERVER_URL + "/api/catering"
+        );
+        console.log(response);
+        setCatering(response.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <Container fluid className="bg-white py-5">
@@ -43,7 +60,7 @@ export default function CateringPage() {
             24 hours advance notice is very much appreciated). Just ask for the
             platters by number or tell us what you like and we can make
             something perfect for your event."
-          platters={sushiPlatters}
+          platters={catering}
         />
       </Container>
     </>

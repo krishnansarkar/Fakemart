@@ -36,7 +36,10 @@ export default function PlatterGallery(props) {
           <Col key={"Platter " + index} xs={12} md={4} className="pb-3">
             <div style={thumbnailContainerStyle}>
               <a
-                href={platter.imageUrl}
+                href={
+                  process.env.REACT_APP_BACKEND_SERVER_IMAGES_URL +
+                  platter.image
+                }
                 onClick={(e) => {
                   e.preventDefault();
                   const lightbox = new Lightbox(e.target);
@@ -44,10 +47,16 @@ export default function PlatterGallery(props) {
                 }}
               >
                 <img
-                  src={platter.imageUrl}
+                  src={
+                    process.env.REACT_APP_BACKEND_SERVER_IMAGES_URL +
+                    platter.image
+                  }
                   alt={"Platter " + index}
                   style={thumbnailImageStyle}
-                  data-src={platter.imageUrl}
+                  data-src={
+                    process.env.REACT_APP_BACKEND_SERVER_IMAGES_URL +
+                    platter.image
+                  }
                   data-gallery={props.title + " gallery"}
                 />
               </a>
