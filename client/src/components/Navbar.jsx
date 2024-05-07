@@ -22,7 +22,7 @@ export default function MyNavBar(props) {
     <div>
       <Navbar className="bg-primary" expand="md" collapseOnSelect>
         <Container>
-          <Navbar.Brand>WooRi Mart</Navbar.Brand>
+          <Navbar.Brand>Fakemart</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
             <Nav className="me-auto">

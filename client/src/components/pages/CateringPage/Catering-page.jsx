@@ -54,11 +54,11 @@ export default function CateringPage() {
           altText="Fruit Platter"
         />
         <PlatterGallery
-          title="Sushi Platters"
-          description="Here are some of our signature platters. Call and ask for the sushi
-            team--we can often have them ready in as quick as an hour (although
-            24 hours advance notice is very much appreciated). Just ask for the
-            platters by number or tell us what you like and we can make
+          title="Signature platters"
+          description="Here are some of our signature platters. 
+            We can often have them ready in as quick as an hour (although
+            24 hours advance notice is very much appreciated). Ask for a specific platter
+            or tell us what you like and we can make
             something perfect for your event."
           platters={catering}
         />

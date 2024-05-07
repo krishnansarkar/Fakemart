@@ -10,12 +10,12 @@ export default function Footer() {
             <img
               width={130}
               src={process.env.PUBLIC_URL + "/images/logo.png"}
-              alt="Woori Mart Logo"
+              alt="Fakemart Logo"
             />
           </Col>
           <Col>
             <h2>Hours</h2>
-            <h4>Woori Mart Princeton</h4>
+            <h4>Fakemart</h4>
             <p>Monday-Sunday 8am - 9pm</p>
           </Col>
           <Col>
@@ -26,27 +26,9 @@ export default function Footer() {
             <h2>Contact Info</h2>
             <p>{contactInfo.address}</p>
             <p>{contactInfo.number}</p>
-            <p>
-              <a href={"mailto:" + contactInfo.email}>{contactInfo.email}</a>
-            </p>
           </Col>
         </Row>
       </Container>
     </footer>
   );
-  /*<div>Logo</div>
-      <div>
-        <h2>Hours</h2>
-        <p>Woori Mart Princeton</p>
-        <p>Monday-Sunday 8am - 9pm</p>
-      </div>
-      <div>
-        <h2>Contact Info</h2>
-        <p>64 Princeton Hightstown Rd, West Windsor Township, NJ 08550</p>
-        <p>609-750-8888</p>
-        <p>David@woorimartprinceton.com</p>
-        <div>Socials</div>
-      </div>
-    </>
-  );*/
 }
