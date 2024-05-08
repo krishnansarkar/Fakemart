@@ -3,7 +3,7 @@ import contactInfo from "./baked-data/contactInfo";
 
 export default function Footer() {
   return (
-    <footer className="border-top py-5 bg-secondary text-white">
+    <footer className="border-top py-5 bg-primary text-white">
       <Container>
         <Row>
           <Col>

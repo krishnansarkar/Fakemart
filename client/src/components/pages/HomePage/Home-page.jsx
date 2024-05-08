@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
-import FeaturedDisplay from "./FeaturedDisplay";
 import FeaturedProducts from "./FeaturedProducts";
+import contactInfo from "../../baked-data/contactInfo.js";
 
 export default function HomePage() {
   const heroContainerStyle = {
@@ -16,7 +16,7 @@ export default function HomePage() {
     left: 0,
     width: "100%",
     height: "100%",
-    background: "rgba(255, 255, 255, 0.8)",
+    background: "rgba(252, 238, 212, 0.8)",
   };
 
   const heroTitleStyle = {
@@ -37,30 +37,25 @@ export default function HomePage() {
         <div style={heroOverlayStyle} className="text-center py-5">
           <div className="mt-5 mx-auto" style={heroTitleStyle}>
             <h1 className="display-1 fw-bold">
-              Korean traditions brought to Princeton's doorstep
+              Madeup traditions brought to a doorstep
             </h1>
           </div>
           <div className="mt-5 mx-auto px-2" style={heroDescriptionStyle}>
             <h3 className="fw-normal">
-              Welcome to Woori Mart Princeton, where you can indulge your senses
-              with authentic Korean cuisine. Our goal is to provide a welcoming
-              shopping and dining experience for our customers. The market is
-              stocked daily with fresh produce, meat, fish and more. Our
-              restaurant also offers a wide range of traditional Korean dishes,
-              sushi, and other specialties.
+              Welcome to Fakemart, where you can indulge your senses with
+              authentic cuisine. Our goal is to provide a welcoming shopping and
+              dining experience for our customers. The market is stocked daily
+              with fresh produce, meat, fish and more. Our restaurant also
+              offers a wide range of traditional dishes, sushi, and other
+              specialties.
             </h3>
           </div>
           <div className="mt-5 mx-auto" style={heroAddressStyle}>
-            <h4 className="fw-bold">
-              64 Princeton Hightstown Rd West Windsor, NJ 08550
-            </h4>
+            <h4 className="fw-bold">{contactInfo.address}</h4>
           </div>
         </div>
       </Container>
-      <FeaturedDisplay />
-      <div>
-        <FeaturedProducts />
-      </div>
+      <FeaturedProducts />
     </>
   );
 }

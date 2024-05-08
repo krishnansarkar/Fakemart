@@ -7,6 +7,7 @@ import CartContext from "./contexts/CartContext";
 export default function Root() {
   const websiteStyle = {
     minWidth: "450px",
+    backgroundColor: "#FAECD2",
   };
 
   const [items, setItems] = useState([]);
