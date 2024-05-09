@@ -19,7 +19,7 @@ export default function TopDisplay() {
         <Col className="pb-3">
           <div>
             <img
-              src={process.env.PUBLIC_URL + "/images/bimbop.png"}
+              src={process.env.PUBLIC_URL + "/images/CateringChefs.png"}
               alt="Bimbop"
               style={imageStyle}
             />
@@ -29,8 +29,8 @@ export default function TopDisplay() {
           <h1 className="text-center">Let us cater your next event</h1>
           <p className="lead mb-3">
             We pride ourselves on not only having the freshest ingredients, but
-            also having the best chefs in the area bringing traditional Korean
-            flavors to Woori Mart Princeton.
+            also having the best chefs in the area bringing traditional flavors
+            to Fakemart.
           </p>
           <p className="lead mb-3">
             Every week we'll have a new specialty menu for catering. If you have

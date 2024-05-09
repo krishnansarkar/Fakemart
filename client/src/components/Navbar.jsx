@@ -20,7 +20,7 @@ export default function MyNavBar(props) {
 
   return (
     <div>
-      <Navbar className="bg-primary" expand="md" collapseOnSelect>
+      <Navbar className="bg-secondary" expand="md" collapseOnSelect>
         <Container>
           <Navbar.Brand>Fakemart</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
