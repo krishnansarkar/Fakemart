@@ -105,6 +105,18 @@ export default function MyNavBar(props) {
             <Col xs={8}>Total:</Col>
             <Col>${cart.getTotalCost()}</Col>
           </Row>
+          <Row>
+            <Link to="/Checkout">
+              <Button
+                onClick={() => {
+                  setShowCart(false);
+                }}
+                variant="outline-secondary"
+              >
+                Checkout
+              </Button>
+            </Link>
+          </Row>
         </Offcanvas.Body>
       </Offcanvas>
     </div>

@@ -9,6 +9,7 @@ import CateringPage from "./components/pages/CateringPage/Catering-page";
 import ContactUsPage from "./components/pages/ContactUsPage/ContactUs-page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import CheckoutPage from "./components/pages/CheckoutPage/Checkout-page";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/ContactUs",
         element: <ContactUsPage />,
+      },
+      {
+        path: "/Checkout",
+        element: <CheckoutPage />,
       },
     ],
   },
