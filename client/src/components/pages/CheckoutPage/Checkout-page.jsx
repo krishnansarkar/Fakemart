@@ -1,10 +1,22 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import CartContext from "../../contexts/CartContext";
 
 export default function CheckoutPage() {
   const cart = useContext(CartContext);
+
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+
+    if (query.get("success")) {
+      setMessage("Purchase confirmed!");
+    } else if (query.get("canceled")) {
+      setMessage("Purchase canceled!");
+    }
+  }, []);
 
   const cartDisplay = (
     <>
@@ -59,6 +71,11 @@ export default function CheckoutPage() {
         <Col xs={8}>Total:</Col>
         <Col>${cart.getTotalCost()}</Col>
       </Row>
+      <Row>
+        <form action="/create-checkout-session" method="POST">
+          <Button type="submit">Checkout</Button>
+        </form>
+      </Row>
     </>
   );
 
@@ -71,8 +88,11 @@ export default function CheckoutPage() {
     </>
   );
 
+  const purchaseConfirmationDisplay = <h3>{message}</h3>;
+
   return (
     <Container className="py-5">
+      {purchaseConfirmationDisplay}
       {cart.getCount() > 0 ? cartDisplay : emptyCartDisplay}
     </Container>
   );

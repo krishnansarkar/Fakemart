@@ -1,4 +1,5 @@
 import "dotenv/config";
+import path from "path";
 import express from "express";
 import Stripe from "stripe";
 import products from "./baked_data/products.js";
@@ -7,8 +8,11 @@ import catering from "./baked_data/catering.js";
 
 const app = express();
 const port = 3333;
+const __dirname = import.meta.dirname;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,7 +36,7 @@ app.get("/api/catering", (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  const domainUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  const domainUrl = req.protocol + "://" + req.get("host") + "/Checkout";
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -52,6 +56,10 @@ app.post("/create-checkout-session", async (req, res) => {
   });
 
   res.redirect(303, session.url);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 app.listen(port, () => {

@@ -70,6 +70,10 @@ export default function Root() {
     }
   };
 
+  const clearCart = () => {
+    setItems([]);
+  };
+
   const cart = {
     items,
     getCount,
@@ -78,6 +82,7 @@ export default function Root() {
     addItem,
     removeItem,
     getTotalCost,
+    clearCart,
   };
 
   return (
