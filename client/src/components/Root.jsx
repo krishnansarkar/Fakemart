@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CartContext from "./contexts/CartContext";
@@ -11,6 +12,13 @@ export default function Root() {
   };
 
   const [items, setItems] = useState([]);
+  const [cookie, setCookie] = useCookies(["cart"]);
+  const cookieValue = cookie.cart;
+
+  useEffect(() => {
+    console.log("here: " + JSON.stringify(cookieValue));
+    setItems(cookieValue);
+  }, []);
 
   const getCount = () => {
     if (items.length === 0) {
@@ -43,6 +51,7 @@ export default function Root() {
 
   const cancelItem = (itemName) => {
     setItems(items.filter((item) => item.name !== itemName));
+    setCookie("cart", JSON.stringify(cart.items), { path: "/" });
   };
 
   const addItem = (itemName, price) => {
@@ -55,6 +64,9 @@ export default function Root() {
       newItems[indexOfItem].quantity += 1;
       setItems(newItems);
     }
+
+    setCookie("cart", cart.items, { path: "/" });
+    // setCookie("cart", "test", { path: "/" });
   };
 
   const removeItem = (itemName) => {
@@ -68,10 +80,14 @@ export default function Root() {
         setItems(newItems);
       }
     }
+
+    setCookie("cart", cart.items, { path: "/" });
   };
 
-  const clearCart = () => {
+  const clear = () => {
     setItems([]);
+
+    setCookie("cart", cart.items, { path: "/" });
   };
 
   const cart = {
@@ -82,7 +98,7 @@ export default function Root() {
     addItem,
     removeItem,
     getTotalCost,
-    clearCart,
+    clear,
   };
 
   return (

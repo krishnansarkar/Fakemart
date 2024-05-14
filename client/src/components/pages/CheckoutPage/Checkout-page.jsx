@@ -12,6 +12,7 @@ export default function CheckoutPage() {
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
+      cart.clear();
       setMessage("Purchase confirmed!");
     } else if (query.get("canceled")) {
       setMessage("Purchase canceled!");
