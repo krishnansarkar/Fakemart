@@ -16,8 +16,9 @@ export default function Root() {
   const cookieValue = cookie.cart;
 
   useEffect(() => {
-    console.log("here: " + JSON.stringify(cookieValue));
-    setItems(cookieValue);
+    if (cookieValue != null) {
+      setItems(cookieValue);
+    }
   }, []);
 
   const getCount = () => {
