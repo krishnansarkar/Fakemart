@@ -1,12 +1,42 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
+import axios from "axios";
 import CartContext from "../../contexts/CartContext";
 
 export default function CheckoutPage() {
   const cart = useContext(CartContext);
 
   const [message, setMessage] = useState("");
+
+  const onCheckout = async () => {
+    try {
+      var items = cart.items.map((item) => {
+        return {
+          name: item.name,
+          quantity: item.quantity,
+        };
+      });
+      console.log(items);
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_SERVER_URL + "/create-checkout-session",
+        {
+          items: items,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+        {
+          maxRedirects: 5,
+        }
+      );
+      window.location.href = response.data;
+    } catch (error) {
+      console.error("Error creating checkout session: ", error);
+    }
+  };
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -73,9 +103,9 @@ export default function CheckoutPage() {
         <Col>${cart.getTotalCost()}</Col>
       </Row>
       <Row>
-        <form action="/create-checkout-session" method="POST">
-          <Button type="submit">Checkout</Button>
-        </form>
+        <Button type="submit" onClick={onCheckout}>
+          Checkout
+        </Button>
       </Row>
     </>
   );

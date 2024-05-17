@@ -2,6 +2,7 @@ import "dotenv/config";
 import path from "path";
 import express from "express";
 import Stripe from "stripe";
+import cors from "cors";
 import products from "./baked_data/products.js";
 import menus from "./baked_data/menus.js";
 import catering from "./baked_data/catering.js";
@@ -12,14 +13,12 @@ const __dirname = import.meta.dirname;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(cors());
+app.options("*", cors());
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(express.json());
+
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.use("/images", express.static("baked_data/images"));
 
@@ -36,6 +35,7 @@ app.get("/api/catering", (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
+  console.log(req.body);
   const domainUrl = req.protocol + "://" + req.get("host") + "/Checkout";
   const session = await stripe.checkout.sessions.create({
     line_items: [
@@ -55,7 +55,7 @@ app.post("/create-checkout-session", async (req, res) => {
     cancel_url: `${domainUrl}?canceled=true`,
   });
 
-  res.redirect(303, session.url);
+  res.status(200).send(session.url);
 });
 
 app.get("*", (req, res) => {

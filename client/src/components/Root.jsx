@@ -21,6 +21,15 @@ export default function Root() {
     }
   }, []);
 
+  const updateCookie = () => {
+    var tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    setCookie("cart", cart.items, {
+      path: "/",
+      expires: tomorrow,
+    });
+  };
+
   const getCount = () => {
     if (items.length === 0) {
       return 0;
@@ -52,7 +61,7 @@ export default function Root() {
 
   const cancelItem = (itemName) => {
     setItems(items.filter((item) => item.name !== itemName));
-    setCookie("cart", JSON.stringify(cart.items), { path: "/" });
+    updateCookie();
   };
 
   const addItem = (itemName, price) => {
@@ -66,8 +75,7 @@ export default function Root() {
       setItems(newItems);
     }
 
-    setCookie("cart", cart.items, { path: "/" });
-    // setCookie("cart", "test", { path: "/" });
+    updateCookie();
   };
 
   const removeItem = (itemName) => {
@@ -82,13 +90,13 @@ export default function Root() {
       }
     }
 
-    setCookie("cart", cart.items, { path: "/" });
+    updateCookie();
   };
 
   const clear = () => {
     setItems([]);
 
-    setCookie("cart", cart.items, { path: "/" });
+    updateCookie();
   };
 
   const cart = {
