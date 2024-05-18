@@ -17,7 +17,6 @@ export default function CheckoutPage() {
           quantity: item.quantity,
         };
       });
-      console.log(items);
       const response = await axios.post(
         process.env.REACT_APP_BACKEND_SERVER_URL + "/create-checkout-session",
         {

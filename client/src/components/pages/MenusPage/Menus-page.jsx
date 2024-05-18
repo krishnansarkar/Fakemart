@@ -11,7 +11,6 @@ export default function MenusPage(props) {
         const response = await axios.get(
           process.env.REACT_APP_BACKEND_SERVER_URL + "/api/menus"
         );
-        console.log(response);
         setMenus(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
