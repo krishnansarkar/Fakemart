@@ -60,8 +60,8 @@ export default function MyNavBar(props) {
                 <Col xs={8} className="align-middle">
                   {item.name}
                 </Col>
-                <Col>
-                  ${item.quantity * item.price}
+                <Col xs={1}>${item.quantity * item.price}</Col>
+                <Col xs={1}>
                   <Button
                     className="ms-3"
                     variant="dark"
