@@ -131,4 +131,15 @@ const menus = [
   },
 ];
 
-export default menus;
+var itemPrices = {};
+menus.forEach((tab) => {
+  const grabItemsFromCategory = (category) => {
+    category.items.forEach((item) => {
+      itemPrices[item.name] = item.price;
+    });
+  };
+  tab.leftCol.forEach((category) => grabItemsFromCategory(category));
+  tab.rightCol.forEach((category) => grabItemsFromCategory(category));
+});
+
+export { menus, itemPrices };

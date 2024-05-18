@@ -4,7 +4,7 @@ import express from "express";
 import Stripe from "stripe";
 import cors from "cors";
 import products from "./baked_data/products.js";
-import menus from "./baked_data/menus.js";
+import { menus, itemPrices } from "./baked_data/menus.js";
 import catering from "./baked_data/catering.js";
 
 const app = express();
@@ -35,21 +35,24 @@ app.get("/api/catering", (req, res) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  console.log(req.body);
   const domainUrl = req.protocol + "://" + req.get("host") + "/Checkout";
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price_data: {
-          currency: "usd",
-          product_data: {
-            name: "Test product",
-          },
-          unit_amount: 3.14 * 100,
+  const { items } = req.body;
+  const line_items = items.map((item) => {
+    const name = item.name;
+    const quantity = item.quantity;
+    return {
+      price_data: {
+        currency: "usd",
+        product_data: {
+          name: item.name,
         },
-        quantity: 1,
+        unit_amount: itemPrices[item.name] * 100,
       },
-    ],
+      quantity: item.quantity,
+    };
+  });
+  const session = await stripe.checkout.sessions.create({
+    line_items: line_items,
     mode: "payment",
     success_url: `${domainUrl}?success=true`,
     cancel_url: `${domainUrl}?canceled=true`,

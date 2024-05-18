@@ -47,7 +47,7 @@ export default function CheckoutPage() {
     } else if (query.get("canceled")) {
       setMessage("Purchase canceled!");
     }
-  }, []);
+  }, [cart]);
 
   const cartDisplay = (
     <>
