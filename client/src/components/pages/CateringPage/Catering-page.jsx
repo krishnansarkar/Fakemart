@@ -13,7 +13,6 @@ export default function CateringPage() {
         const response = await axios.get(
           process.env.REACT_APP_BACKEND_SERVER_URL + "/api/catering"
         );
-        console.log(response);
         setCatering(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);

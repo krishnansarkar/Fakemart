@@ -12,7 +12,6 @@ export default function FeaturedProducts() {
         const response = await axios.get(
           process.env.REACT_APP_BACKEND_SERVER_URL + "/api/featured-products"
         );
-        console.log(response);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
