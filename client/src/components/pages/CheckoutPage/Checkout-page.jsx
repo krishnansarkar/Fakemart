@@ -102,11 +102,9 @@ export default function CheckoutPage() {
         <Col xs={8}>Total:</Col>
         <Col>${cart.getTotalCost()}</Col>
       </Row>
-      <Row>
-        <Button type="submit" onClick={onCheckout}>
-          Checkout
-        </Button>
-      </Row>
+      <Button type="submit" onClick={onCheckout}>
+        Checkout
+      </Button>
     </>
   );
 
