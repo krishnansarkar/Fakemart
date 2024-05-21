@@ -7,8 +7,11 @@ import products from "./baked_data/products.js";
 import { menus, itemPrices } from "./baked_data/menus.js";
 import catering from "./baked_data/catering.js";
 
+const clientDir = "./baked_data/build";
+// const clientDir = "../client/build";
+
 const app = express();
-const port = 3333;
+const port = process.env.PORT || 8080;
 const __dirname = import.meta.dirname;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -18,7 +21,7 @@ app.options("*", cors());
 
 app.use(express.json());
 
-app.use(express.static(path.resolve(__dirname, "../client/build")));
+app.use(express.static(path.resolve(__dirname, clientDir)));
 
 app.use("/images", express.static("baked_data/images"));
 
@@ -62,7 +65,7 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  res.sendFile(path.resolve(__dirname, clientDir, "index.html"));
 });
 
 app.listen(port, () => {

@@ -1,26 +1,8 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Container } from "react-bootstrap";
 import TopDisplay from "./TopDisplay";
 import PlatterBurb from "./PlatterBlurb";
-import PlatterGallery from "./PlatterGallery";
 
 export default function CateringPage() {
-  var [catering, setCatering] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          process.env.REACT_APP_BACKEND_SERVER_URL + "/api/catering"
-        );
-        setCatering(response.data);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
     <>
       <Container fluid className="bg-white py-5">
@@ -52,15 +34,6 @@ export default function CateringPage() {
             18-inch platter for you in as little as 30 minutes. Just call."
           imageUrl={process.env.PUBLIC_URL + "/images/CateringFruit.png"}
           altText="Fruit Platter"
-        />
-        <PlatterGallery
-          title="Signature platters"
-          description="Here are some of our signature platters. 
-            We can often have them ready in as quick as an hour (although
-            24 hours advance notice is very much appreciated). Ask for a specific platter
-            or tell us what you like and we can make
-            something perfect for your event."
-          platters={catering}
         />
       </Container>
     </>
