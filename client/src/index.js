@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root";
 import HomePage from "./components/pages/HomePage/Home-page";
 import ErrorPage from "./components/pages/Error-page";
@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import CheckoutPage from "./components/pages/CheckoutPage/Checkout-page";
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
@@ -42,8 +42,4 @@ const router = createHashRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
