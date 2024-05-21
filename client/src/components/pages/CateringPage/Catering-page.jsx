@@ -23,7 +23,6 @@ export default function CateringPage() {
             other is an assortment of kimbap. Both are served with free soup."
           imageUrl={process.env.PUBLIC_URL + "/images/CateringLunchBox.png"}
           altText="Lunch Box"
-          flipOrder
         />
         <PlatterBurb
           index="03"
