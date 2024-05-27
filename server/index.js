@@ -2,7 +2,6 @@ import "dotenv/config";
 import path from "path";
 import express from "express";
 import Stripe from "stripe";
-import cors from "cors";
 import products from "./baked_data/products.js";
 import { menus, itemPrices } from "./baked_data/menus.js";
 import catering from "./baked_data/catering.js";
@@ -15,9 +14,6 @@ const port = process.env.PORT || 8080;
 const __dirname = import.meta.dirname;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-app.use(cors());
-app.options("*", cors());
 
 app.use(express.json());
 
